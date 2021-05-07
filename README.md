@@ -26,7 +26,11 @@ git clone "https://github.com/Spaceface16518/love-box.git"
 
 ### Build
 
-Love Box is built using [CMake](https://cmake.org/).
+Love Box is built using [CMake](https://cmake.org/). You will also need the arm-none-eabi gcc toolchain.
+
+```shell
+sudo apt install cmake gcc-arm-none-eabi libnewlib-arm-none-eabi
+```
 
 ```shell
 cmake --build . --target love_box
