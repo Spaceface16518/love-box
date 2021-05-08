@@ -26,13 +26,7 @@ include_directories(${LIB_DIR}/Fonts)
 message("Using e-Paper libraries from ${LIB_DIR}")
 
 ## Generate quotes source file
-add_custom_command(
-        PRE_BUILD
-        OUTPUT ${CMAKE_CURRENT_SOURCE_DIR}/quotes.o
-        WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
-        COMMAND ${CMAKE_OBJCOPY} --input binary --output elf32-littlearm quotes.txt quotes.o
-        DEPENDS ${CMAKE_CURRENT_SOURCE_DIR}/quotes.txt
-)
+include(quotes.cmake)
 
 add_executable(love_box main.cpp quotes.o quote_sampler.cpp quote_sampler.hpp display_manager.cpp display_manager.hpp)
 
