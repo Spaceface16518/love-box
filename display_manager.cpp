@@ -1,8 +1,12 @@
 #pragma clang diagnostic push
 #pragma ide diagnostic ignored "readability-convert-member-functions-to-static"
 
+// don't mangle names
+extern "C" {
 #include <GUI_Paint.h>
 #include <EPD_2in9d.h>
+}
+
 #include "display_manager.hpp"
 
 void DisplayManager::show(std::string *quote) {
