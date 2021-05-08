@@ -25,18 +25,16 @@ include_directories(${LIB_DIR}/e-Paper)
 include_directories(${LIB_DIR}/Fonts)
 message("Using e-Paper libraries from ${LIB_DIR}")
 
-# Generate quotes source file
-configure_file(${CMAKE_CURRENT_SOURCE_DIR}/quotes.hpp.in ${CMAKE_CURRENT_SOURCE_DIR}/quotes.hpp COPYONLY)
-file(STRINGS quotes.txt QUOTES_LIST)
-foreach (QUOTE ${QUOTES_LIST})
-    file(APPEND quotes.hpp "\"${QUOTE}\",")
-endforeach ()
-file(APPEND quotes.hpp "};\n") # close array
-list(LENGTH QUOTES_LIST NUM_QUOTES)
-file(APPEND quotes.hpp "#define NUM_QUOTES ${NUM_QUOTES}")
+## Generate quotes source file
+add_custom_command(
+        PRE_BUILD
+        OUTPUT ${CMAKE_CURRENT_SOURCE_DIR}/quotes.o
+        WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
+        COMMAND ${CMAKE_OBJCOPY} --input binary --output elf32-littlearm quotes.txt quotes.o
+        DEPENDS ${CMAKE_CURRENT_SOURCE_DIR}/quotes.txt
+)
 
-
-add_executable(love_box main.cpp quote_sampler.cpp quote_sampler.hpp display_manager.cpp display_manager.hpp)
+add_executable(love_box main.cpp quotes.o quote_sampler.cpp quote_sampler.hpp display_manager.cpp display_manager.hpp)
 
 # use pico usb instead of uart
 pico_enable_stdio_usb(love_box 1)

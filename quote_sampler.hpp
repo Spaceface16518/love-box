@@ -17,8 +17,12 @@ private:
 
     std::unordered_set<size_t> history;
 
+    std::vector<char *> quotes;
+
 public:
-    std::string *next();
+    QuoteSampler();
+
+    char *next();
 };
 
 

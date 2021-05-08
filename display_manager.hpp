@@ -15,7 +15,7 @@ private:
 
     static constexpr auto font = &Font8;
 
-    void paintString(const std::string *quote);
+    void paintString(char *quote);
 
     void paintBackground();
 
@@ -29,7 +29,7 @@ private:
 public:
     DisplayManager();
 
-    void show(std::string *quote);
+    void show(char *quote);
 
     virtual ~DisplayManager();
 

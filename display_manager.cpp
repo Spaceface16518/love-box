@@ -9,7 +9,7 @@ extern "C" {
 
 #include "display_manager.hpp"
 
-void DisplayManager::show(std::string *quote) {
+void DisplayManager::show(char *quote) {
     // update the foreground image
     paintString(quote);
 
@@ -48,10 +48,10 @@ inline void DisplayManager::selectImage(const std::string &name) {
     Paint_SelectImage((uint8_t *) name.c_str());
 }
 
-void DisplayManager::paintString(const std::string *quote) {
+void DisplayManager::paintString(char *quote) {
     selectImage(foregroundImageName);
     Paint_Clear(WHITE);
-    Paint_DrawString_EN(0, 0, quote->c_str(), font, BLACK, WHITE);
+    Paint_DrawString_EN(0, 0, quote, font, BLACK, WHITE);
 }
 
 void DisplayManager::paintBackground() {
