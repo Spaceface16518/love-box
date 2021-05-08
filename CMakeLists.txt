@@ -12,7 +12,7 @@ pico_sdk_init()
 # Add e-paper libs
 if (DEFINED ENV{LIB_DIR} AND (NOT LIB_DIR))
     set(LIB_DIR $ENV{LIB_DIR})
-else()
+else ()
     set(LIB_DIR ${CMAKE_CURRENT_SOURCE_DIR}/lib)
 endif ()
 add_subdirectory(${LIB_DIR}/Config)
