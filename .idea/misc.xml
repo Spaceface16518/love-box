@@ -5,5 +5,11 @@
     <sourceRoots>
       <file path="$PROJECT_DIR$/rust/src" />
     </sourceRoots>
+    <libraryRoots>
+      <file path="$PROJECT_DIR$/lib/Config" />
+      <file path="$PROJECT_DIR$/lib/Fonts" />
+      <file path="$PROJECT_DIR$/lib/GUI" />
+      <file path="$PROJECT_DIR$/lib/e-Paper" />
+    </libraryRoots>
   </component>
 </project>
