@@ -23,9 +23,9 @@ include_directories(${LIB_DIR}/Fonts)
 # Generate quotes source file
 configure_file(${CMAKE_CURRENT_SOURCE_DIR}/quotes.hpp.in ${CMAKE_CURRENT_SOURCE_DIR}/quotes.hpp COPYONLY)
 file(STRINGS quotes.txt QUOTES_LIST)
-foreach(QUOTE ${QUOTES_LIST})
+foreach (QUOTE ${QUOTES_LIST})
     file(APPEND quotes.hpp "\"${QUOTE}\",")
-endforeach()
+endforeach ()
 file(APPEND quotes.hpp "};\n") # close array
 list(LENGTH QUOTES_LIST NUM_QUOTES)
 file(APPEND quotes.hpp "#define NUM_QUOTES ${NUM_QUOTES}")

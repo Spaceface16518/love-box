@@ -12,11 +12,13 @@
 class QuoteSampler {
 private:
     std::default_random_engine rng;
+
     std::uniform_int_distribution<size_t> distribution;
+
     std::unordered_set<size_t> history;
 
 public:
-    std::string* next();
+    std::string *next();
 };
 
 

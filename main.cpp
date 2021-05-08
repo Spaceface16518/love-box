@@ -5,7 +5,9 @@
 #include "display_manager.hpp"
 
 typedef std::chrono::duration<uint32_t, std::ratio<3600, 1>> hours;
+
 typedef std::chrono::duration<uint32_t, std::ratio<1, 1000>> millis;
+
 constexpr millis delay = hours(3);
 
 int main() {
@@ -20,4 +22,5 @@ int main() {
         sleep_ms(delay.count());
     }
 }
+
 #pragma clang diagnostic pop
