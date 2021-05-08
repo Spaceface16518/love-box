@@ -10,7 +10,11 @@ add_compile_options(-Wall)
 pico_sdk_init()
 
 # Add e-paper libs
-set(LIB_DIR ${CMAKE_CURRENT_SOURCE_DIR}/lib)
+if (DEFINED ENV{LIB_DIR} AND (NOT LIB_DIR))
+    set(LIB_DIR $ENV{LIB_DIR})
+else()
+    set(LIB_DIR ${CMAKE_CURRENT_SOURCE_DIR}/lib)
+endif ()
 add_subdirectory(${LIB_DIR}/Config)
 add_subdirectory(${LIB_DIR}/e-Paper)
 add_subdirectory(${LIB_DIR}/Fonts)
@@ -19,6 +23,7 @@ include_directories(${LIB_DIR}/Config)
 include_directories(${LIB_DIR}/GUI)
 include_directories(${LIB_DIR}/e-Paper)
 include_directories(${LIB_DIR}/Fonts)
+message("Using e-Paper libraries from ${LIB_DIR}")
 
 # Generate quotes source file
 configure_file(${CMAKE_CURRENT_SOURCE_DIR}/quotes.hpp.in ${CMAKE_CURRENT_SOURCE_DIR}/quotes.hpp COPYONLY)
