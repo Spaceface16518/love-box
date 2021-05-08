@@ -30,6 +30,8 @@ include(quotes.cmake)
 
 add_executable(love_box main.cpp quotes.o quote_sampler.cpp quote_sampler.hpp display_manager.cpp display_manager.hpp)
 
+include(lto.cmake)
+
 # use pico usb instead of uart
 pico_enable_stdio_usb(love_box 1)
 pico_enable_stdio_uart(love_box 0)
